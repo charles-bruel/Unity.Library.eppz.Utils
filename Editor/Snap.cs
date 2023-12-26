@@ -19,7 +19,7 @@ namespace EPPZ.Utils.Editor
 		[MenuItem("eppz!/Snap/Snap center to Grid &%g")] // Alt + CMD + G
 		static void MenuSnapToGrid()
 		{
-			foreach (Transform eachTransform in Selection.GetTransforms(SelectionMode.TopLevel | SelectionMode.OnlyUserModifiable))
+			foreach (Transform eachTransform in Selection.GetTransforms(SelectionMode.TopLevel | SelectionMode.Editable))
 			{
 				eachTransform.position = new Vector3(
 					Mathf.Round(eachTransform.position.x / EditorPrefs.GetFloat("MoveSnapX")) * EditorPrefs.GetFloat("MoveSnapX"),
@@ -32,7 +32,7 @@ namespace EPPZ.Utils.Editor
 		[MenuItem("eppz!/Snap/Snap Bounds to Origin &%b")] // Alt + CMD + B
 		static void MenuSnapBoundsToGrid()
 		{
-			foreach (Transform eachTransform in Selection.GetTransforms(SelectionMode.TopLevel | SelectionMode.OnlyUserModifiable))
+			foreach (Transform eachTransform in Selection.GetTransforms(SelectionMode.TopLevel | SelectionMode.Editable))
 			{
 				if (eachTransform.gameObject.GetComponent<Renderer>() == null) continue; // Only if any renderer
 
